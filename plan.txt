@@ -1,0 +1,23 @@
+
+
+ML Web Service:
+    *** do something I think is cool, won't finish unfun projects ***
+    TODO:
+        pick a publicly available, static data-set + an input parameter and a drill down parameter
+        pick an ML behavior - LDA, clustering, classification, whatever
+        pick an algorithm (NB, NLP, etc.) likely to work on any inputs. Limit inputs to 'should work' sets
+    REQUIREMENTS;
+        use a simple, pre-build html template
+    reference multiple data sources? database + server side curl?
+    make the results personal - user's input URL, tweets, FB account, whatever
+    show a pretty picture, D3.js
+      Geospatial is always fun
+
+IDEAS:
+    x) Stock Clustering & Automatic Company-Group Summarization (LDA)
+          i.   cluster the input tickers by correlation
+          ii.  fetch ticker articles 
+          iii. results will be grouped into sectors
+          iv.  LDA results will summarize the meaning of each group
+
+    x) 
