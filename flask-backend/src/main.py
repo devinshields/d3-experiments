@@ -34,7 +34,10 @@ def closing_price_table(prices, ticker=''):
   if ticker:
     return sorted(TickerPriceTime(ticker, key_date, prices[key_date]['Adj Close']) for key_date in prices)
   return sorted(PriceTime(key_date, prices[key_date]['Adj Close']) for key_date in prices)
-  
+
+
+def callback_wrapper(o):
+  return 'api_callback({0})'.format(o)
 
 @app.route('/closing-price')
 def historic_closing_prices():
@@ -44,7 +47,7 @@ def historic_closing_prices():
   end    = datetime.datetime.now().strftime('%Y-%m-%d')
   prices = ystockquote.get_historical_prices(ticker, start, end)
   table  = closing_price_table(prices)
-  return json.dumps(table)
+  return callback_wrapper(json.dumps(table))
 
 
 if __name__ == "__main__":
