@@ -1,42 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <meta charset="utf-8">
-        <title>D3 Demo: SVG with data</title>
-        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-        <style type="text/css">
-            /* No style rules here yet */		
-        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <!-- source:  http://jsfiddle.net/6EFqk/1/ -->
+        <script>
+            jQuery(document).ready(function($) {
+                $('#getupdate').click(function() {
+                    var symbol = $('input[id=symb]').val();
+                    var url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%3D%22' + symbol + '%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=';
+                    $.getJSON(url, function(data) {
+                        var items = [];
+                        $('#results').html('');
+                        $.each(data.query.results.quote, function(key, val) {
+                            items.push('<li id="' + key + '">' + val + '</li>');
+
+                        });
+                        $('<ul/>', {'class': 'my-new-list', html: items.join('')}).appendTo('#results');
+                    });
+                });
+            });
+        </script>
     </head>
     <body>
-        <script type="text/javascript">
-
-            //Width and height
-            var w = 500;
-            var h = 50;
-
-            //Data
-            var dataset = [5, 10, 15, 20, 25];
-
-            //Create SVG element
-            var svg = d3.select("body")
-                    .append("svg")
-                    .attr("width", 500)
-                    .attr("height", 50);
-
-            var circles = svg.selectAll("circle")
-                    .data(dataset)
-                    .enter()
-                    .append("circle");
-
-            circles.attr("cx", function(d, i) {
-                return (i * 50) + 25;
-            })
-                    .attr("cy", h / 2)
-                    .attr("r", function(d) {
-                return d;
-            });
-
-        </script>
+        <div style="padding:16px;">Stock Ticker : <input id="symb" type="textbox" value="FB"></input></div>
+        <button id="getupdate" name = "getupdate" type="button">Get Updates!</button>
+        <div id="results"></div>
     </body>
 </html>
