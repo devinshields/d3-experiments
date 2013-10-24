@@ -9,14 +9,16 @@ import ystockquote
 
 from flask import request
 from flask import Flask
-app = Flask(__name__)
+
+
+app = Flask(__name__, static_folder='static', static_url_path='') # note: is tweaky about '/'s
 
 
 TickerPriceTime = collections.namedtuple('TickerPriceTime', ['ticker', 'date', 'closing_price'])
 PriceTime       = collections.namedtuple('PriceTime',       ['date', 'closing_price'])
 
 
-@app.route('/')
+@app.route('/api')
 def hello_flask():
   return '''
 <!DOCTYPE html>

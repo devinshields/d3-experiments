@@ -31,9 +31,12 @@
             console.log(remote_data.toString());
             console.log();
         };
+        
+        
+        
+        var api_url = "http://localhost:5000/closing-price?ticker=msft";
 
-
-        d3.json("./json/sample.json", function(error, json) {
+        d3.json(api_url, function(error, json) { // d3.json("./json/sample.json", function(error, json) {
             if (error)
                 return console.warn(error);
             remote_data = json;

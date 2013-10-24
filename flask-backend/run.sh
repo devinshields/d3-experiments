@@ -1,13 +1,10 @@
 #!/bin/bash
 
 
-# simple python web server
-#python -m SimpleHTTPServer
-
-
 # move to the source dir and activate the virtual environment
-cd ../src
-. ../venv/bin/activate
+. venv/bin/activate
+
+cd src
 
 
 # spin up the data API
