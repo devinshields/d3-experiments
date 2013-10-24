@@ -14,7 +14,7 @@ virtualenv venv --distribute --no-site-packages
 # install tools
 pip install Flask
 pip install ystockquote
-
+pip install flask-cors
 
 # install QA tools
 pip install pylint

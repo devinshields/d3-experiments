@@ -18,17 +18,28 @@
     <script src="http://d3js.org/d3.v3.js"></script>
     <script>
 
-        var dataset = [5, 10, 15, 20, 25];
+        // https://github.com/mbostock/d3/wiki/Requests
 
-        d3.select("body").selectAll("div")
-                .data(dataset)
-                .enter()
-                .append("div")
-                .attr("class", "bar")
-                .style("height", function(d) {
-            var barHeight = d * 5;
-            return barHeight + "px";
+        var remote_data; // global var, safe till page refresh
+
+
+        var visualizeit = function() {
+            console.log('getting sleepy!');
+            console.log();
+            console.log(remote_data);
+            console.log();
+            console.log(remote_data.toString());
+            console.log();
+        };
+
+
+        d3.json("./json/sample.json", function(error, json) {
+            if (error)
+                return console.warn(error);
+            remote_data = json;
+            visualizeit();
         });
+
 
     </script>
 </body>

@@ -39,6 +39,7 @@ def closing_price_table(prices, ticker=''):
 def callback_wrapper(o):
   return 'api_callback({0})'.format(o)
 
+
 @app.route('/closing-price')
 def historic_closing_prices():
   ''' pulls historic closing price data from the Yahoo finance API  '''
